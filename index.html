@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head><title>Secure File Upload</title></head>
+<body>
+    <h1>Upload a File (Encrypted)</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" required>
+        <button type="submit">Upload</button>
+    </form>
+
+    <h2>Encrypted Files:</h2>
+    <ul>
+        {% for file in files %}
+        <li>
+            {{ file }} —
+            <a href="{{ url_for('download', filename=file) }}">Download (Decrypted)</a>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <p><a href="{{ url_for('logout') }}">Logout</a></p>
+</body>
+</html>
